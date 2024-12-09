@@ -1,13 +1,34 @@
 
 package org.example.montaine.guillaume
 
-import org.example.montaine.guillaume.megamangashop.MangaLot
-import org.example.montaine.guillaume.megamangashop.TicketDeCaisse
+import org.example.montaine.guillaume.megamangashop.Boutique
+import org.example.montaine.guillaume.megamangashop.Pays
 
 fun main() {
 
-    val Commande = TicketDeCaisse()
     println("\u001B[1mBienvenue dans le calcul de votre commande\u001B[0m\n")
+    println("Veuillez choisir le pays de livraison :")
+    println("1 - France")
+    println("2 - Espagne")
+    println("3 - Allemagne")
+    println("4 - Royaume-Uni")
+    println("5 - Belgique")
+    val choix = readln().toInt()
+    var paysBoutique = Pays.France
+    if (choix == 1) {
+        paysBoutique = Pays.France
+    //} else if (choix == 2) {
+    //    val pays = Pays.Espagne
+    //} else if (choix == 3) {
+    //    val pays = Pays.Allemagne
+    //} else if (choix == 4) {
+    //    val pays = Pays.RoyaumeUni
+    //} else if (choix == 5) {
+    //    val pays = Pays.Belgique
+    }
+    val Boutique = Boutique(pays = paysBoutique)
+
+    val Commande = Boutique.creerTicket()
     println("Veuillez rentrer le nombre de lots différents que vous avez dans votre commande :")
     val nbLot = readln().toInt()
     for (i in 1..nbLot) {
