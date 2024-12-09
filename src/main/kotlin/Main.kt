@@ -43,6 +43,6 @@ fun main() {
         println("Le sous-total du lot $i est de \u001B[1m$total\u001B[0m\n")
     }
     val totalTTC = Commande.calculerTotalTTC()
-    println("Le total de votre commande est de \u001B[1m$totalTTC\u001B[0m")
+    println("Le total de votre commande est de \u001B[1m$totalTTC\u001B[0m\n")
     println(Commande.afficherTicket())
 }
