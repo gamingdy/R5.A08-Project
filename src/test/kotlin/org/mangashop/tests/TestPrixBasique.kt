@@ -18,7 +18,7 @@ class TestPrixBasique : BehaviorSpec({
 
             When("je calcule le prix total") {
                 val lot = MangaLot(quantite, prix)
-                val total = lot.calculateLot()
+                val total = lot.calculatePrixLot()
 
                 Then("le prix total est le bon") {
                     total shouldBe 30.0
@@ -33,7 +33,7 @@ class TestPrixBasique : BehaviorSpec({
             val lot = MangaLot(quantite,prix)
             When("je calcule le prix total") {
                 try{
-                    lot.calculateLot()
+                    lot.calculatePrixLot()
                 } catch (e: IllegalArgumentException) {
                     Then("une exception est levée") {
                         e.message shouldBe "La quantité ne doit pas être negative"
@@ -48,7 +48,7 @@ class TestPrixBasique : BehaviorSpec({
             val lot = MangaLot(quantite, prix)
             When("je calcule le prix total") {
                 try{
-                    lot.calculateLot()
+                    lot.calculatePrixLot()
                 } catch (e: IllegalArgumentException) {
                     Then("une exception est levée") {
                         e.message shouldBe "Le prix ne doit pas être negatif"
@@ -63,7 +63,7 @@ class TestPrixBasique : BehaviorSpec({
             val prix = 10.0
             val lot = MangaLot(quantite, prix)
             When("je calcule le prix total") {
-                val total = lot.calculateLot()
+                val total = lot.calculatePrixLot()
 
                 Then("le prix total est 0") {
                     total shouldBe 0.0

@@ -18,7 +18,7 @@ class TestFacturation: BehaviorSpec({
                 When("je calcule le prix total") {
                     val lot1 = MangaLot(quantite1, prix1)
                     val lot2 = MangaLot(quantite2, prix2)
-                    val total = lot1.calculateLot()+lot2.calculateLot()
+                    val total = lot1.calculatePrixLot()+lot2.calculatePrixLot()
 
                     Then("le prix total est le bon") {
                         total shouldBe 42*3.92+82*4.10
