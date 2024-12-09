@@ -22,6 +22,8 @@ data class TicketDeCaisse(val Id: String = ULID().nextULID(), val pays: Pays) {
     fun calculRemise(): Double {
         if (totalHT < 150) {
             return 0.0
+        } else if (totalHT < 200) {
+            return totalHT * 0.02
         }
 
         return totalHT * 0.1
