@@ -4,6 +4,7 @@ enum class Pays(val tva: Double) {
     France(0.2),
     Espagne(0.182),
     Allemagne(0.156),
+    RoyaumeUni(0.228),
     Belgique(0.17),
 }
 

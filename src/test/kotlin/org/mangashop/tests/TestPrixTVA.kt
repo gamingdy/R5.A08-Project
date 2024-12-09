@@ -1,4 +1,3 @@
-
 package org.mangashop.tests
 
 import io.kotest.core.spec.style.BehaviorSpec
@@ -85,6 +84,26 @@ class TestPrixTVA : BehaviorSpec({
 
                 Then("on doit appliquer 15.6% de TVA sur le prix Total") {
                     total shouldBe 30.0 * (1 + Pays.Allemagne.tva)
+                }
+            }
+        }
+    }
+    
+    context("Je veux vendre des manga au Royaume-Uni") {
+
+        given("Une quantité et un prix et un pays") {
+            val quantite = 3
+            val prix = 10.0
+            val boutique = Boutique(Pays.RoyaumeUni)
+
+            When("je calcule le prix total") {
+
+                val ticket = boutique.creerTicket()
+                ticket.ajouterLot(quantite, prix)
+                val total = ticket.calculerTotalTTC()
+
+                Then("on doit appliquer 22.8% de TVA sur le prix Total") {
+                    total shouldBe 30.0 * (1 + Pays.RoyaumeUni.tva)
                 }
             }
         }
