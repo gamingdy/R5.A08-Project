@@ -21,7 +21,7 @@ class TestPrixTVA : BehaviorSpec({
 
                 val ticket = boutique.creerTicket()
                 ticket.ajouterLot(quantite, prix)
-                val total = ticket.TotalTtc
+                val total = ticket.calculateLot()
 
                 Then("on doit appliquer 20% de TVA sur le prix Total") {
                     total shouldBe 30.0*Pays.France.tva + 30.0

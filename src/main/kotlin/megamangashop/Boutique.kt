@@ -5,9 +5,8 @@ enum class Pays(val tva: Double) {
 }
 
 data class Boutique(val pays: Pays) {
-    fun creerTicket(quantite: Int, prix: Double): TicketDeCaisse {
+    fun creerTicket(): TicketDeCaisse {
         return TicketDeCaisse()
-
     }
 
 
