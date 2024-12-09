@@ -1,6 +1,7 @@
 
 package org.example.montaine.guillaume
 import org.example.montaine.guillaume.megamangashop.Boutique
+import org.example.montaine.guillaume.megamangashop.MangaLot
 import org.example.montaine.guillaume.megamangashop.Pays
 import org.example.montaine.guillaume.megamangashop.TicketDeCaisse
 
