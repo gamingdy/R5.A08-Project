@@ -8,7 +8,6 @@ data class TicketDeCaisse(val Id: String = ULID().nextULID(), val pays: Pays) {
     private var totalTtc: Double = 0.0
     var totalHT: Double = 0.0
     private val taxe: Double = pays.tva
-    val remise: Double = 0.0
     private var lots: MutableList<MangaLot> = mutableListOf()
 
     private fun calculateTotalHT(): Double {
@@ -28,6 +27,8 @@ data class TicketDeCaisse(val Id: String = ULID().nextULID(), val pays: Pays) {
             return totalHT * 0.03
         } else if (totalHT < 500) {
             return totalHT * 0.05
+        } else if (totalHT < 1000) {
+            return totalHT * 0.07
         }
 
         return totalHT * 0.1
@@ -51,7 +52,7 @@ data class TicketDeCaisse(val Id: String = ULID().nextULID(), val pays: Pays) {
     }
 
     private fun calculerPrixAvecRemise(): Double {
-        return totalHT - remise
+        return totalHT - calculRemise()
     }
 
     fun afficherTicket(): String {
@@ -60,6 +61,7 @@ data class TicketDeCaisse(val Id: String = ULID().nextULID(), val pays: Pays) {
             stringResult += lot.afficherLot() + "\n"
         }
         stringResult += "Total HT : %.2f €\n".format(totalHT)
+        val remise = calculRemise()
         if (remise > 0) {
             stringResult += "Remise : - %.2f €\n".format(remise)
             stringResult += "Total HT après remise : %.2f €\n".format(calculerPrixAvecRemise())
