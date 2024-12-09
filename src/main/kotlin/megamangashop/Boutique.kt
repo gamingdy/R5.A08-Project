@@ -2,6 +2,7 @@ package org.example.montaine.guillaume.megamangashop
 
 enum class Pays(val tva: Double) {
     France(0.2),
+    Belgique(0.17),
 }
 
 data class Boutique(val pays: Pays) {

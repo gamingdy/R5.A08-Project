@@ -21,10 +21,30 @@ class TestPrixTVA : BehaviorSpec({
 
                 val ticket = boutique.creerTicket()
                 ticket.ajouterLot(quantite, prix)
-                val total = ticket.calculateLot()
+                val total = ticket.calculerTotalTTC()
 
                 Then("on doit appliquer 20% de TVA sur le prix Total") {
-                    total shouldBe 30.0*Pays.France.tva + 30.0
+                    total shouldBe 30.0* (1+Pays.France.tva)
+                }
+            }
+        }
+    }
+
+    context("Je veux vendre des manga en Belgique") {
+
+        given("Une quantité et un prix et un pays") {
+            val quantite = 3
+            val prix = 10.0
+            val boutique = Boutique(Pays.Belgique)
+
+            When("je calcule le prix total") {
+
+                val ticket = boutique.creerTicket()
+                ticket.ajouterLot(quantite, prix)
+                val total = ticket.calculerTotalTTC()
+
+                Then("on doit appliquer 17% de TVA sur le prix Total") {
+                    total shouldBe 30.0* (1+Pays.Belgique.tva)
                 }
             }
         }
