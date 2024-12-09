@@ -33,6 +33,17 @@ class TestPrixRemise : BehaviorSpec({
                 }
             }
         }
+        given("J'ai vendu entre 300 et 500 €"){
+            val ticket = TicketDeCaisse(pays = Pays.France)
+            val quantite = 10
+            val prix = 30.0
+            When("je calcule le prix total") {
+                ticket.ajouterLot(quantite, prix)
+                Then("je dois appliquer une remise de 5%") {
+                    ticket.calculerTotalTTC() shouldBe 300.0 * (1 + Pays.France.tva) * 0.95
+                }
+            }
+        }
     }
     }
 )
