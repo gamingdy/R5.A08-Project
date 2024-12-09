@@ -1,4 +1,3 @@
-
 package org.mangashop.tests
 
 import io.kotest.core.spec.style.BehaviorSpec
@@ -8,7 +7,7 @@ import org.example.montaine.guillaume.megamangashop.MangaLot
 import org.example.montaine.guillaume.megamangashop.Pays
 import org.example.montaine.guillaume.megamangashop.TicketDeCaisse
 
-class TestFacturation: BehaviorSpec({
+class TestFacturation : BehaviorSpec({
 
     context("Je veux vendre plusieurs lot de manga hors tva et remises") {
 
@@ -33,7 +32,7 @@ class TestFacturation: BehaviorSpec({
                 val ticket = TicketDeCaisse(pays = Pays.France)
                 ticket.ajouterLot(quantite1, prix1)
                 ticket.ajouterLot(quantite2, prix2)
-                val totalHT = ticket.calculateTotalHT()
+                val totalHT = ticket.totalHT
                 val totalTTC = ticket.calculerTotalTTC()
                 val ticketString = ticket.afficherTicket()
                 Then("le ticket de caisse est le bon") {
