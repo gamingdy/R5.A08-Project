@@ -23,7 +23,6 @@ class TestPrixBasique : BehaviorSpec({
             }
         }
     }
-    context()
 }
 )
 
