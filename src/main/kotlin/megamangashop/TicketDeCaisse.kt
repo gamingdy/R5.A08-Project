@@ -1,5 +1,5 @@
 
-package montaine.guillaume
+package org.example.montaine.guillaume.megamangashop
 
 import de.huxhorn.sulky.ulid.ULID;
 

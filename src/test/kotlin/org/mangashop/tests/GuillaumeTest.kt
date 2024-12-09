@@ -1,9 +1,9 @@
 
-package org.example.montaine.guillaume.tests
+package org.mangashop.tests
 
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldNotBe
-import montaine.guillaume.TicketDeCaisse
+import org.example.montaine.guillaume.megamangashop.TicketDeCaisse
 
 class GuillaumeTest : BehaviorSpec({
 
