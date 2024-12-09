@@ -13,4 +13,12 @@ data class TicketDeCaisse(val Id: String = ULID().nextULID() ) {
     fun calculateLot(quantite: Int, prix: Double): Double {
         return quantite * prix
     }
+
+    fun afficherTicket(): String {
+        return "Ticket de caisse n°$Id \n" +
+
+                "Taxe : $Taxe \n" +
+                "Remise : $Remise" +
+                "Total TTC : $TotalTtc"
+    }
 }
