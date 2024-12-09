@@ -38,7 +38,7 @@ class TestFacturation : BehaviorSpec({
                 Then("le ticket de caisse est le bon") {
                     ticketString shouldBe "Ticket de caisse n°${ticket.Id} \n" +
                             "Taxe : ${Pays.France.tva} \n" +
-                            "Remise : ${ticket.remise}" +
+                            "Remise : ${ticket.calculRemise()}" +
                             "Total TTC : $totalTTC"
                 }
             }
