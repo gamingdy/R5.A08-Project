@@ -16,9 +16,9 @@ fun main() {
         println("Entrez le prix unitaire du manga :")
         val prix = readln().toDouble()
         val lot = Commande.ajouterLot(quantite, prix)
-        val total = lot.calculateLot()
-        println("Le sous-total du lot $i est de \u001B[1m$total \u001B[0m:")
+        val total = lot.calculatePrixLot()
+        println("Le sous-total du lot $i est de \u001B[1m$total\u001B[0m\n")
     }
-    val totalHT = Commande.calculateLot()
-    println("Le total de votre commande est de\u001B[1m $totalHT\u001B[0m")
+    val totalHT = Commande.calculateTotalHT()
+    println("Le total de votre commande est de \u001B[1m$totalHT\u001B[0m")
 }

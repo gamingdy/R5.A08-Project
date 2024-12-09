@@ -12,16 +12,17 @@ data class TicketDeCaisse(val Id: String = ULID().nextULID() ) {
     private val remise: Double = 0.0
     private var lots : MutableList<MangaLot> = mutableListOf()
 
-    fun calculateLot(): Double {
+    fun calculateTotalHT(): Double {
         totalHT = 0.0
         for (lot in lots) {
-            totalHT += lot.calculateLot()
+            totalHT += lot.calculatePrixLot()
         }
         return totalHT
     }
 
     fun ajouterLot(quantite: Int, prix: Double): MangaLot {
         val lot = MangaLot(quantite, prix)
+        lot.calculatePrixLot()
         lots.add(lot)
         return lot
     }
