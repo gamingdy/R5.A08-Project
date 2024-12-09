@@ -37,10 +37,10 @@ data class TicketDeCaisse(val Id: String = ULID().nextULID(), val pays: Pays) {
         for (lot in lots) {
             stringResult += lot.afficherLot() + "\n"
         }
-        stringResult += "Total HT : $totalHT €\n"
-        stringResult += "Remise : $remise €\n"
-        stringResult += "TVA : $taxe\n"
-        stringResult += "Total TTC : $totalTtc €\n"
+        stringResult += "Total HT : %.2f €\n".format(totalHT)
+        stringResult += "Remise : %.2f €\n".format(remise)
+        stringResult += "TVA : %.2f €\n".format(taxe)
+        stringResult += "Total TTC : %.2f €\n".format(totalTtc)
         return stringResult
     }
 }
