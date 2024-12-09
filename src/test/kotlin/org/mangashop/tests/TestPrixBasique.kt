@@ -11,11 +11,12 @@ class TestPrixBasique : BehaviorSpec({
     context("A partir d'une quantité  et d'un prix de manga je veux un prix total") {
 
         given("Une quantité et un prix") {
+            val ticket = TicketDeCaisse()
             val quantite = 3
             val prix = 10.0
 
             When("je calcule le prix total") {
-                val total = calculateLot(quantite, prix)
+                val total = ticket.calculateLot(quantite, prix)
 
                 Then("le prix total est le bon") {
                     total shouldBe 30.0
@@ -23,7 +24,6 @@ class TestPrixBasique : BehaviorSpec({
             }
         }
     }
-    context()
 }
 )
 
