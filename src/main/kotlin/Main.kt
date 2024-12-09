@@ -13,8 +13,8 @@ fun main() {
         val quantite = readln().toInt()
         println("Entrez le prix unitaire du manga")
         val prix = readln().toDouble()
-        val lot = MangaLot()
-        val total = lot.calculateLot(quantite, prix)
+        val lot = MangaLot(quantite,prix)
+        val total = lot.calculateLot()
         println("Le total du lot $i est de $total")
     }
 }
