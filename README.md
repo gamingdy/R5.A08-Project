@@ -1,4 +1,7 @@
 # Briefing
+
+Sofia Gribanova Simon Armand Christian Gikapa
+
 ## Contexte
 J’ai quelques mangas en stock et de nombreux contacts chez des libraires. Je souhaite une solution qui me simplifie les ventes. Les calculs de prix de commandes sont ma hantise !! 
 
