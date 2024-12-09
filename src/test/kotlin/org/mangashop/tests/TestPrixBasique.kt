@@ -5,7 +5,7 @@ import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldNotBe
 import org.example.montaine.guillaume.megamangashop.TicketDeCaisse
 
-class GuillaumeTest : BehaviorSpec({
+class TestPrixBasique : BehaviorSpec({
 
     context("je veux vérifier que chaque ticket a son identifiant unique") {
 
