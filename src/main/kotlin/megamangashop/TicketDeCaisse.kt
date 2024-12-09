@@ -9,7 +9,7 @@ data class TicketDeCaisse(val Id: String = ULID().nextULID(), val pays:Pays ) {
     private var totalTtc: Double = 0.0
     private var totalHT: Double = 0.0
     private val taxe: Double = pays.tva
-    private val remise: Double = 0.0
+    val remise: Double = 0.0
     private var lots : MutableList<MangaLot> = mutableListOf()
 
     fun calculateTotalHT(): Double {

@@ -4,6 +4,8 @@ package org.mangashop.tests
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import org.example.montaine.guillaume.megamangashop.MangaLot
+import org.example.montaine.guillaume.megamangashop.Pays
+import org.example.montaine.guillaume.megamangashop.TicketDeCaisse
 
 class TestFacturation: BehaviorSpec({
 
@@ -18,12 +20,28 @@ class TestFacturation: BehaviorSpec({
                 When("je calcule le prix total") {
                     val lot1 = MangaLot(quantite1, prix1)
                     val lot2 = MangaLot(quantite2, prix2)
-                    val total = lot1.calculatePrixLot()+lot2.calculatePrixLot()
+                    val total = lot1.calculatePrixLot() + lot2.calculatePrixLot()
 
                     Then("le prix total est le bon") {
-                        total shouldBe 42*3.92+82*4.10
+                        total shouldBe 42 * 3.92 + 82 * 4.10
+
+                    }
+
+                }
+                When("J'affiche le ticket de caisse"){
+                    val ticket=TicketDeCaisse(pays=Pays.France)
+                    ticket.ajouterLot(quantite1,prix1)
+                    ticket.ajouterLot(quantite2,prix2)
+                    val totalHT=ticket.calculateTotalHT()
+                    val totalTTC=ticket.calculerTotalTTC()
+                    val ticketString=ticket.afficherTicket()
+                    Then("le ticket de caisse est le bon"){
+                        ticketString shouldBe "Ticket de caisse n°${ticket.Id} \n" +
+                                "Taxe : ${Pays.France.tva} \n" +
+                                "Remise : ${ticket.remise}" +
+                                "Total TTC : $totalTTC"
                     }
                 }
             }
-
-    }})
+        }
+    })

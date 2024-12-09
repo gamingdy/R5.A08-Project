@@ -2,11 +2,12 @@
 package org.example.montaine.guillaume
 
 import org.example.montaine.guillaume.megamangashop.MangaLot
+import org.example.montaine.guillaume.megamangashop.Pays
 import org.example.montaine.guillaume.megamangashop.TicketDeCaisse
 
 fun main() {
 
-    val Commande = TicketDeCaisse()
+    val Commande = TicketDeCaisse(pays= Pays.France)
     println("\u001B[1mBienvenue dans le calcul de votre commande\u001B[0m\n")
     println("Veuillez rentrer le nombre de lots différents que vous avez dans votre commande :")
     val nbLot = readln().toInt()
