@@ -28,6 +28,8 @@ data class TicketDeCaisse(val Id: String = ULID().nextULID(), val pays: Pays) {
             return totalHT * 0.03
         } else if (totalHT < 500) {
             return totalHT * 0.05
+        } else if (totalHT < 1000) {
+            return totalHT * 0.07
         }
 
         return totalHT * 0.1
