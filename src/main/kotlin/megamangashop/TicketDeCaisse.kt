@@ -33,10 +33,14 @@ data class TicketDeCaisse(val Id: String = ULID().nextULID(), val pays: Pays) {
     }
 
     fun afficherTicket(): String {
-        return "Ticket de caisse n°$Id \n" +
-
-                "Taxe : $taxe \n" +
-                "Remise : $remise" +
-                "Total TTC : $totalTtc"
+        var stringResult = "Ticket de caisse n°$Id \n"
+        for (lot in lots) {
+            stringResult += lot.afficherLot() + "\n"
+        }
+        stringResult += "Total HT : $totalHT €\n"
+        stringResult += "Remise : $remise €\n"
+        stringResult += "TVA : $taxe\n"
+        stringResult += "Total TTC : $totalTtc €\n"
+        return stringResult
     }
 }
