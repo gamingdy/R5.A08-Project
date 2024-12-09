@@ -20,9 +20,10 @@ data class TicketDeCaisse(val Id: String = ULID().nextULID() ) {
         return totalHT
     }
 
-    fun ajouterLot(quantite: Int, prix: Double) {
+    fun ajouterLot(quantite: Int, prix: Double): MangaLot {
         val lot = MangaLot(quantite, prix)
         lots.add(lot)
+        return lot
     }
 
     fun afficherTicket(): String {
