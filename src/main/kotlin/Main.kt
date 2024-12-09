@@ -20,13 +20,13 @@ fun main() {
     if (choix == 1) {
         paysBoutique = Pays.France
     } else if (choix == 2) {
-        val pays = Pays.Espagne
+        paysBoutique = Pays.Espagne
     } else if (choix == 3) {
-        val pays = Pays.Allemagne
+        paysBoutique = Pays.Allemagne
     } else if (choix == 4) {
-        val pays = Pays.RoyaumeUni
+        paysBoutique = Pays.RoyaumeUni
     } else if (choix == 5) {
-        val pays = Pays.Belgique
+        paysBoutique = Pays.Belgique
     }
     val Boutique = Boutique(pays = paysBoutique)
 
