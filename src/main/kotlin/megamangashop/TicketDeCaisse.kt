@@ -19,6 +19,18 @@ data class TicketDeCaisse(val Id: String = ULID().nextULID(), val pays: Pays) {
         return totalHT
     }
 
+    fun calculRemise(): Double {
+        if (totalHT < 150) {
+            return 0.0
+        } else if (totalHT < 200) {
+            return totalHT * 0.02
+        } else if (totalHT < 300) {
+            return totalHT * 0.03
+        }
+
+        return totalHT * 0.1
+    }
+
     fun ajouterLot(quantite: Int, prix: Double): MangaLot {
         val lot = MangaLot(quantite, prix)
         lot.calculatePrixLot()
