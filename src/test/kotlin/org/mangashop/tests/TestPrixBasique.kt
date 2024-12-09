@@ -24,6 +24,24 @@ class TestPrixBasique : BehaviorSpec({
             }
         }
     }
+    context("Je veux acheter plusieurs lots avec des prix de manga differents"){
+        given("Deux lots de manga"){
+            val ticket = TicketDeCaisse()
+            val quantite1 = 3
+            val prix1 = 10.0
+            val quantite2 = 2
+            val prix2 = 5.0
+
+            When("je crée les lots et je calcule le prix total"){
+                ticket.creerLot(quantite1, prix1)
+                ticket.creerLot(quantite2, prix2)
+                val total1 = ticket.TotalTtc
+                Then("le prix total est le bon"){
+                    total1 shouldBe 40.0
+                }
+            }
+        }
+    }
 }
 )
 
