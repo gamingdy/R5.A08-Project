@@ -23,7 +23,7 @@ class TestPrixTVA : BehaviorSpec({
                 val total = ticket.TotalTtc
 
                 Then("on doit appliquer 20% de TVA sur le prix Total") {
-                    total shouldBe 30.0*0.2 + 30.0
+                    total shouldBe 30.0*Pays.France.tva + 30.0
                 }
             }
         }
