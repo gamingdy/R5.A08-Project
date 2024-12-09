@@ -32,14 +32,18 @@ class TestFacturation : BehaviorSpec({
                 val ticket = TicketDeCaisse(pays = Pays.France)
                 ticket.ajouterLot(quantite1, prix1)
                 ticket.ajouterLot(quantite2, prix2)
-                val totalHT = ticket.totalHT
-                val totalTTC = ticket.calculerTotalTTC()
                 val ticketString = ticket.afficherTicket()
                 Then("le ticket de caisse est le bon") {
-                    ticketString shouldBe "Ticket de caisse n°${ticket.Id} \n" +
-                            "Taxe : ${Pays.France.tva} \n" +
-                            "Remise : ${ticket.calculRemise()}" +
-                            "Total TTC : $totalTTC"
+                    ticketString shouldBe
+                            "\u001B[1mTicket de caisse n°${ticket.Id} \u001B[0m\n\n" +
+                            "42 mangas * 3.92 € = 164,64 €\n" +
+                            "82 mangas * 4.1 € = 336,20 €\n" +
+                            "\n" +
+                            "Total HT : 500,84 €\n" +
+                            "Remise : - 35,06 €\n" +
+                            "Total HT après remise : 465,78 €\n" +
+                            "TVA : + 93,16 €\n" +
+                            "\u001B[1mTotal TTC : 558,94 €\u001B[0m"
                 }
             }
         }

@@ -39,6 +39,7 @@ data class TicketDeCaisse(val Id: String = ULID().nextULID(), val pays: Pays) {
         lot.calculatePrixLot()
         lots.add(lot)
         calculateTotalHT()
+        calculerTotalTTC()
         return lot
     }
 
@@ -47,11 +48,11 @@ data class TicketDeCaisse(val Id: String = ULID().nextULID(), val pays: Pays) {
         return totalTtc
     }
 
-    private fun calculerTaxe(): Double {
+    fun calculerTaxe(): Double {
         return calculerPrixAvecRemise() * taxe
     }
 
-    private fun calculerPrixAvecRemise(): Double {
+    fun calculerPrixAvecRemise(): Double {
         return totalHT - calculRemise()
     }
 
@@ -67,7 +68,7 @@ data class TicketDeCaisse(val Id: String = ULID().nextULID(), val pays: Pays) {
             stringResult += "Total HT après remise : %.2f €\n".format(calculerPrixAvecRemise())
         }
         stringResult += "TVA : + %.2f €\n".format(calculerTaxe())
-        stringResult += "\u001B[1mTotal TTC : %.2f €\u001B[0m\n".format(totalTtc)
+        stringResult += "\u001B[1mTotal TTC : %.2f €\u001B[0m".format(totalTtc)
         return stringResult
     }
 }
