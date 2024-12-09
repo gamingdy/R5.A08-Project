@@ -8,7 +8,7 @@ import org.example.montaine.guillaume.megamangashop.TicketDeCaisse
 
 class TestPrixBasique : BehaviorSpec({
 
-    context("A partir d'une quantité de manga je veux un prix total") {
+    context("A partir d'une quantité  et d'un prix de manga je veux un prix total") {
 
         given("Une quantité et un prix") {
             val quantite = 3
@@ -22,6 +22,9 @@ class TestPrixBasique : BehaviorSpec({
                 }
             }
         }
-    }})
-
+    }
+    context()
 }
+)
+
+
