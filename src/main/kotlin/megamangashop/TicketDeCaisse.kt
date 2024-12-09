@@ -28,7 +28,7 @@ data class TicketDeCaisse(val Id: String = ULID().nextULID(), val pays:Pays ) {
     }
 
     fun calculerTotalTTC(): Double {
-        totalTtc = totalHT * (1 + taxe)
+        totalTtc = calculateTotalHT() * (1 + taxe)
         return totalTtc
     }
 
