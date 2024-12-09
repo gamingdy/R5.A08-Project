@@ -1,18 +1,17 @@
-
 package org.example.montaine.guillaume.megamangashop
 
 import de.huxhorn.sulky.ulid.ULID;
 
 
-data class TicketDeCaisse(val Id: String = ULID().nextULID(), val pays:Pays ) {
+data class TicketDeCaisse(val Id: String = ULID().nextULID(), val pays: Pays) {
 
     private var totalTtc: Double = 0.0
-    private var totalHT: Double = 0.0
+    var totalHT: Double = 0.0
     private val taxe: Double = pays.tva
     val remise: Double = 0.0
-    private var lots : MutableList<MangaLot> = mutableListOf()
+    private var lots: MutableList<MangaLot> = mutableListOf()
 
-    fun calculateTotalHT(): Double {
+    private fun calculateTotalHT(): Double {
         totalHT = 0.0
         for (lot in lots) {
             totalHT += lot.calculatePrixLot()
@@ -24,6 +23,7 @@ data class TicketDeCaisse(val Id: String = ULID().nextULID(), val pays:Pays ) {
         val lot = MangaLot(quantite, prix)
         lot.calculatePrixLot()
         lots.add(lot)
+        calculateTotalHT()
         return lot
     }
 
@@ -33,10 +33,14 @@ data class TicketDeCaisse(val Id: String = ULID().nextULID(), val pays:Pays ) {
     }
 
     fun afficherTicket(): String {
-        return "Ticket de caisse n°$Id \n" +
-
-                "Taxe : $taxe \n" +
-                "Remise : $remise" +
-                "Total TTC : $totalTtc"
+        var stringResult = "Ticket de caisse n°$Id \n"
+        for (lot in lots) {
+            stringResult += lot.afficherLot() + "\n"
+        }
+        stringResult += "Total HT : %.2f €\n".format(totalHT)
+        stringResult += "Remise : %.2f €\n".format(remise)
+        stringResult += "TVA : %.2f €\n".format(taxe)
+        stringResult += "Total TTC : %.2f €\n".format(totalTtc)
+        return stringResult
     }
 }

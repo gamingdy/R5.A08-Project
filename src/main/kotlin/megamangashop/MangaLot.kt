@@ -13,4 +13,8 @@ data class MangaLot(val quantite: Int, val prix: Double) {
         }
         return quantite * prix
     }
+
+    fun afficherLot(): String {
+        return "$quantite mangas * $prix € = %.2f €".format(calculatePrixLot())
+    }
 }
